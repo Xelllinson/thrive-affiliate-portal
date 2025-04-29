@@ -63,9 +63,27 @@ const Dashboard = () => {
             <DashboardStats />
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
-              <QRCodeGenerator />
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    Создание QR-кодов
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <QRCodeGenerator />
+                </CardContent>
+              </Card>
               
-              <ReferralLinkGenerator />
+              <Card>
+                <CardHeader>
+                  <CardTitle className="flex items-center">
+                    Создание реферальных ссылок
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <ReferralLinkGenerator />
+                </CardContent>
+              </Card>
             </div>
             
             <div className="mt-8">
@@ -81,7 +99,7 @@ const Dashboard = () => {
                     <TabsList className="mb-4">
                       <TabsTrigger value="overview" className="flex items-center">
                         <LineChart className="mr-2" size={16} />
-                        Обзор
+                        Общая статистика
                       </TabsTrigger>
                       <TabsTrigger value="conversions" className="flex items-center">
                         <BarChartHorizontal className="mr-2" size={16} />
@@ -90,14 +108,63 @@ const Dashboard = () => {
                     </TabsList>
                     
                     <TabsContent value="overview">
-                      <div className="text-center py-16 text-gray-500">
-                        <p>Здесь будет отображаться график с общей статистикой</p>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div className="bg-white p-6 rounded-lg border">
+                          <h3 className="font-medium mb-4">Переходы по QR-кодам</h3>
+                          <div className="h-40 flex items-center justify-center bg-gray-50 rounded">
+                            <p className="text-gray-500">График переходов по QR-кодам</p>
+                          </div>
+                          <div className="mt-4 text-sm">
+                            <div className="flex justify-between">
+                              <span>Всего переходов:</span>
+                              <span className="font-medium">1,245</span>
+                            </div>
+                            <div className="flex justify-between mt-1">
+                              <span>Уникальных:</span>
+                              <span className="font-medium">876</span>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="bg-white p-6 rounded-lg border">
+                          <h3 className="font-medium mb-4">Переходы по реферальным ссылкам</h3>
+                          <div className="h-40 flex items-center justify-center bg-gray-50 rounded">
+                            <p className="text-gray-500">График переходов по реферальным ссылкам</p>
+                          </div>
+                          <div className="mt-4 text-sm">
+                            <div className="flex justify-between">
+                              <span>Всего переходов:</span>
+                              <span className="font-medium">3,782</span>
+                            </div>
+                            <div className="flex justify-between mt-1">
+                              <span>Уникальных:</span>
+                              <span className="font-medium">2,341</span>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </TabsContent>
                     
                     <TabsContent value="conversions">
-                      <div className="text-center py-16 text-gray-500">
-                        <p>Здесь будет отображаться статистика по конверсиям</p>
+                      <div className="bg-white p-6 rounded-lg border">
+                        <h3 className="font-medium mb-4">Конверсия в заявки</h3>
+                        <div className="h-40 flex items-center justify-center bg-gray-50 rounded">
+                          <p className="text-gray-500">График конверсии переходов в заявки</p>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                          <div className="bg-gray-50 p-4 rounded">
+                            <p className="text-sm text-gray-500">Переходы</p>
+                            <p className="text-xl font-bold">5,027</p>
+                          </div>
+                          <div className="bg-gray-50 p-4 rounded">
+                            <p className="text-sm text-gray-500">Заявки</p>
+                            <p className="text-xl font-bold">378</p>
+                          </div>
+                          <div className="bg-gray-50 p-4 rounded">
+                            <p className="text-sm text-gray-500">Конверсия</p>
+                            <p className="text-xl font-bold text-green-600">7.5%</p>
+                          </div>
+                        </div>
                       </div>
                     </TabsContent>
                   </Tabs>
