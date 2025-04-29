@@ -14,6 +14,9 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import DashboardQRCodes from "./pages/DashboardQRCodes";
 import DashboardReferralLinks from "./pages/DashboardReferralLinks";
+import DashboardHistory from "./pages/DashboardHistory";
+import DashboardPartners from "./pages/DashboardPartners";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +36,9 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/dashboard/qr-codes" element={<DashboardQRCodes />} />
           <Route path="/dashboard/referral-links" element={<DashboardReferralLinks />} />
+          <Route path="/dashboard/history" element={<DashboardHistory />} />
+          <Route path="/dashboard/partners" element={<DashboardPartners />} />
+          <Route path="/admin" element={<AdminDashboard />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -9,7 +9,6 @@ import {
   Link as LinkIcon,
   History,
   Users,
-  Settings,
   LogOut,
   ChevronLeft,
   ChevronRight,
@@ -49,6 +48,7 @@ const Sidebar = ({ onLogout }: SidebarProps) => {
   const location = useLocation();
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -60,6 +60,18 @@ const Sidebar = ({ onLogout }: SidebarProps) => {
 
     handleResize();
     window.addEventListener("resize", handleResize);
+
+    // Проверяем, является ли пользователь администратором
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const user = JSON.parse(storedUser);
+        setIsAdmin(!!user.isAdmin);
+      } catch (e) {
+        setIsAdmin(false);
+      }
+    }
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -77,8 +89,14 @@ const Sidebar = ({ onLogout }: SidebarProps) => {
     { to: "/dashboard/referral-links", icon: <LinkIcon size={20} />, text: "Реферальные ссылки" },
     { to: "/dashboard/history", icon: <History size={20} />, text: "История" },
     { to: "/dashboard/partners", icon: <Users size={20} />, text: "Партнеры" },
-    { to: "/dashboard/settings", icon: <Settings size={20} />, text: "Настройки" },
   ];
+
+  // Добавляем ссылку на админ-панель только для администраторов
+  const adminLinks = isAdmin ? [
+    { to: "/admin", icon: <LayoutDashboard size={20} />, text: "Админ-панель" },
+  ] : [];
+
+  const allLinks = [...links, ...adminLinks];
 
   const sidebarClasses = cn(
     "flex flex-col h-screen bg-white border-r transition-all duration-300 z-20",
@@ -119,7 +137,7 @@ const Sidebar = ({ onLogout }: SidebarProps) => {
         </div>
         
         <nav className="flex-1 overflow-y-auto p-3 space-y-1">
-          {links.map((link) => (
+          {allLinks.map((link) => (
             <SidebarLink
               key={link.to}
               to={link.to}

@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Bell, User, Search, Settings, LogOut } from "lucide-react";
+import { Bell, User, Search, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { 
@@ -19,6 +19,7 @@ interface DashboardHeaderProps {
     email: string;
     fullName?: string;
     companyName?: string;
+    isAdmin?: boolean;
   };
 }
 
@@ -111,14 +112,15 @@ const DashboardHeader = ({ user }: DashboardHeaderProps) => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Мой аккаунт</DropdownMenuLabel>
+            {user.isAdmin && (
+              <DropdownMenuItem className="bg-purple-50 text-purple-700">
+                <span className="font-medium">Администратор</span>
+              </DropdownMenuItem>
+            )}
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <User className="mr-2" size={16} />
               <span>Профиль</span>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="mr-2" size={16} />
-              <span>Настройки</span>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="text-red-500">
