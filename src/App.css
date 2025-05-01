@@ -1,10 +1,10 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+/* Base styles */
+body {
+  scroll-behavior: smooth;
 }
 
+/* Logo styles */
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -18,6 +18,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Animation keyframes */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -33,10 +34,68 @@
   }
 }
 
-.card {
-  padding: 2em;
+/* Gradient effects */
+.gradient-bg {
+  background: linear-gradient(135deg, #9b87f5 0%, #7E69AB 100%);
 }
 
-.read-the-docs {
-  color: #888;
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(135deg, #9b87f5 0%, #6E59A5 100%);
+}
+
+/* Enhanced shadow effects */
+.shadow-hover {
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-hover:hover {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Card styles */
+.partner-card {
+  transition: all 0.3s ease;
+}
+
+.partner-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Improved button animations */
+.btn-animate {
+  transition: all 0.3s ease;
+}
+
+.btn-animate:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Renderforest-inspired section padding */
+.section-padding {
+  padding: 5rem 0;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 7rem 0;
+  }
+}
+
+/* Improved card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
 }

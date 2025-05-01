@@ -92,35 +92,38 @@ const Stat = ({ value, label, suffix = '', prefix = '', delay = 0 }: StatProps) 
     <div 
       ref={statRef} 
       className={cn(
-        "text-center transition-opacity duration-500",
+        "text-center transition-opacity duration-500 bg-white p-8 rounded-xl border border-gray-100 shadow-sm",
         isVisible ? "opacity-100" : "opacity-0"
       )}
     >
-      <div className="text-4xl md:text-5xl font-bold text-brand-purple">
+      <div className="text-4xl md:text-5xl font-bold text-brand-purple mb-2">
         {isVisible ? (
           <Counter end={value} suffix={suffix} prefix={prefix} />
         ) : (
           <span>{prefix}0{suffix}</span>
         )}
       </div>
-      <div className="mt-2 text-lg text-gray-600">{label}</div>
+      <div className="text-lg text-gray-600">{label}</div>
     </div>
   );
 };
 
 const StatCounter = () => {
   return (
-    <section className="bg-white py-16">
+    <section className="bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">Нам доверяют</h2>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500">
-            Цифры говорят сами за себя
+        <div className="text-center mb-16 max-w-3xl mx-auto animate-fade-in">
+          <h2 className="text-base text-brand-purple font-semibold tracking-wide uppercase">Нам доверяют</h2>
+          <p className="mt-2 text-3xl font-extrabold text-gray-900 sm:text-4xl">
+            Впечатляющие результаты
+          </p>
+          <p className="mt-5 max-w-xl mx-auto text-xl text-gray-500">
+            Цифры говорят сами за себя. Наша партнерская программа приносит реальные результаты.
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <Stat value={1500} label="Партнеров" suffix="+" delay={100} />
-          <Stat value={12000} label="Сгенерированных QR-кодов" delay={300} />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <Stat value={1500} label="Активных партнеров" suffix="+" delay={100} />
+          <Stat value={12000} label="QR-кодов создано" delay={300} />
           <Stat value={52} label="Миллиона рублей выплат" prefix="₽" delay={500} />
           <Stat value={98} label="Процент удовлетворенности" suffix="%" delay={700} />
         </div>
